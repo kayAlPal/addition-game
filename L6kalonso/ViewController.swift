@@ -13,17 +13,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //MARK: Properties
     
     @IBOutlet var easyLabel: UILabel!
+    @IBOutlet var easyButton: UIButton!
     
     @IBOutlet var mediumLabel: UILabel!
+    @IBOutlet var mediumButton: UIButton!
     
     @IBOutlet var hardLabel: UILabel!
+    @IBOutlet var hardButton: UIButton!
     
     @IBOutlet var textField: UITextField!
     
     var theLabels = [UILabel]()
-//    var theTimer = NSTimer()
-//   
-//    var seconds: NSTimeInterval = 60
+
     
     
     var easyOne = 0
@@ -38,6 +39,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     var possibleAnswer: Int? = 0
     var currentAnswer = 0
+    var currentErrors = 0
     
     var userScore = 0
     var currentGoal = 20
@@ -52,12 +54,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        easyButton.layer.cornerRadius = 15
+        easyButton.layer.borderWidth = 1
+        easyButton.layer.borderColor = UIColor.whiteColor().CGColor
+        
         startTheGame()
-//        theTimer = setUpTheTimer()
-//        startTheTimer(theTimer)
     }
     
     func startTheGame(alert: UIAlertAction! = nil) {
+        
+        if currentErrors == 4 {
+            // add segue
+        }
         
         if userScore >= currentGoal {
             easyRange *= 2
@@ -68,9 +76,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         generateNewLabels(easyRange, medium: mediumRange, hard: hardRange)
         
-            textField.delegate = self
-            textField.placeholder = "Type the answer to any of the three questions"
-            textField.becomeFirstResponder()
+        //textField.delegate = self
+        //textField.placeholder = "Type the answer to any of the three questions"
+        //textField.becomeFirstResponder()
     }
     
     func generateNewLabels(easy: UInt32, medium: UInt32, hard: UInt32) {
@@ -96,16 +104,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     }
     
-//    func setUpTheTimer() -> NSTimer {
-//        var newTimer = NSTimer(timeInterval: seconds, invocation: viewDidLoad(), repeats: false)
-//        return newTimer
-//    }
-//    
-//    func startTheTimer(theTimer: NSTimer) {
-//       
-//        theTimer.fire()
-//        
-//    }
+
 
     
     //MARK: UITextFieldDelegate
@@ -135,9 +134,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func easyButton(sender: UIButton) {
         
-        easyLabel.text = "\(easyOne) + \(easyTwo) = \(currentAnswer)"
-        textField.placeholder = "Touch the corresponding square to assign"
-        textField.text = ""
+        textField.delegate = self
+        textField.becomeFirstResponder()
+        
+        //easyLabel.text = "\(easyOne) + \(easyTwo) = \(currentAnswer)"
+        //textField.placeholder = "Touch the corresponding square to assign"
+        //textField.text = ""
 
         if currentAnswer == easyAnswer {
             
@@ -149,7 +151,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         else {
             
-            let ac = UIAlertController(title: title, message: "Incorrect", preferredStyle: .Alert)
+            let ac = UIAlertController(title: title, message: "Incorrect. You now have \(++currentErrors) errors", preferredStyle: .Alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
             presentViewController(ac, animated: true, completion: nil)
         }

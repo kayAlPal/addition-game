@@ -7,6 +7,99 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Goodbye View Controller-->
+        <scene sceneID="iRx-ZH-MOI">
+            <objects>
+                <viewController id="dQa-OW-tt0" customClass="GoodbyeViewController" customModule="L6kalonso" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tGF-Rj-VaN"/>
+                        <viewControllerLayoutGuide type="bottom" id="pCo-QM-E86"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="f58-rL-1Nu">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Awesome job! " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEJ-ht-lQO">
+                                <rect key="frame" x="198" y="108" width="204" height="56"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="33"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.86124553020000005" green="0.98306993490000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="-1" height="-3"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oSW-e5-I2k">
+                                <rect key="frame" x="20" y="264" width="560" height="72"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This Game" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XFG-6n-FlR">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="72"/>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Best Ever" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ASY-Ww-EhY">
+                                        <rect key="frame" x="280" y="0.0" width="280" height="72"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="99" id="p2q-VO-mcf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="26"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="p2q-VO-mcf"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="ASY-Ww-EhY" firstAttribute="width" secondItem="XFG-6n-FlR" secondAttribute="width" id="MOJ-I1-GcZ"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoL-Bg-1Nr">
+                                <rect key="frame" x="140" y="336" width="41" height="95"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="59"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYw-Cd-kmV">
+                                <rect key="frame" x="420" y="336" width="41" height="95"/>
+                                <fontDescription key="fontDescription" name="Noteworthy-Light" family="Noteworthy" pointSize="59"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94041326989999996" green="1" blue="0.91259791450000005" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="jYw-Cd-kmV" firstAttribute="centerX" secondItem="ASY-Ww-EhY" secondAttribute="centerX" id="0aH-xw-Ga6"/>
+                            <constraint firstItem="oSW-e5-I2k" firstAttribute="top" secondItem="f58-rL-1Nu" secondAttribute="top" constant="264" id="1tz-Su-POI"/>
+                            <constraint firstItem="oSW-e5-I2k" firstAttribute="top" secondItem="MEJ-ht-lQO" secondAttribute="bottom" constant="100" id="8ft-3J-kkr"/>
+                            <constraint firstItem="uoL-Bg-1Nr" firstAttribute="top" secondItem="oSW-e5-I2k" secondAttribute="bottom" constant="10" id="Ba3-w5-3z3"/>
+                            <constraint firstItem="MEJ-ht-lQO" firstAttribute="centerX" secondItem="f58-rL-1Nu" secondAttribute="centerX" id="D95-u0-wuU"/>
+                            <constraint firstItem="jYw-Cd-kmV" firstAttribute="top" secondItem="ASY-Ww-EhY" secondAttribute="bottom" id="IzK-3D-sea"/>
+                            <constraint firstItem="uoL-Bg-1Nr" firstAttribute="top" secondItem="XFG-6n-FlR" secondAttribute="bottom" id="NLI-qk-Zm1"/>
+                            <constraint firstItem="uoL-Bg-1Nr" firstAttribute="centerX" secondItem="XFG-6n-FlR" secondAttribute="centerX" id="grd-6E-eix"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="oSW-e5-I2k" secondAttribute="trailing" id="hGT-a9-zEx"/>
+                            <constraint firstItem="uoL-Bg-1Nr" firstAttribute="centerY" secondItem="f58-rL-1Nu" secondAttribute="centerY" id="lcv-aE-rTr"/>
+                            <constraint firstItem="oSW-e5-I2k" firstAttribute="leading" secondItem="f58-rL-1Nu" secondAttribute="leadingMargin" id="snS-3g-U49"/>
+                            <constraint firstItem="oSW-e5-I2k" firstAttribute="centerY" secondItem="f58-rL-1Nu" secondAttribute="centerY" id="tJ7-By-Qim"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Ba3-w5-3z3"/>
+                                <exclude reference="lcv-aE-rTr"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bestScoreLabel" destination="jYw-Cd-kmV" id="evG-2e-uY4"/>
+                        <outlet property="highScoreLabel" destination="jYw-Cd-kmV" id="fIN-2q-uNF"/>
+                        <outlet property="thisGameScoreLabel" destination="uoL-Bg-1Nr" id="51K-lz-bvb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ezv-an-Smm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="769" y="260"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>

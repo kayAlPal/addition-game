@@ -61,11 +61,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
         startTheGame()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     func startTheGame(alert: UIAlertAction! = nil) {
-        
-        if currentErrors == 4 {
-            // add segue
-        }
         
         if userScore >= currentGoal {
             easyRange *= 2
@@ -136,11 +136,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         textField.delegate = self
         textField.becomeFirstResponder()
-        
+        return
+    }
+    
         //easyLabel.text = "\(easyOne) + \(easyTwo) = \(currentAnswer)"
         //textField.placeholder = "Touch the corresponding square to assign"
         //textField.text = ""
-
+    func checkAnswer(String: answer) {
+    
         if currentAnswer == easyAnswer {
             
             let ac = UIAlertController(title: title, message: "Correct! Your score is \(++userScore).", preferredStyle: .Alert)
@@ -152,9 +155,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
         else {
             
             let ac = UIAlertController(title: title, message: "Incorrect. You now have \(++currentErrors) errors", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            if currentErrors < 4 {
+                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            } else {
+                ac.addAction(UIAlertAction(title: "Stats", style: .Default, handler: segueToGoodbye))
+            }
             presentViewController(ac, animated: true, completion: nil)
         }
+    }
+    
+    func segueToGoodbye(alert: UIAlertAction! = nil) {
+        
     }
 
     
@@ -176,8 +187,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         else {
             
-            let ac = UIAlertController(title: title, message: "Incorrect", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            let ac = UIAlertController(title: title, message: "Incorrect. Current number of errors: \(++currentErrors)", preferredStyle: .Alert)
+            if currentErrors < 4 {
+                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            } else {
+                ac.addAction(UIAlertAction(title: "Stats", style: .Default, handler: segueToGoodbye))
+            }
             presentViewController(ac, animated: true, completion: nil)
         }
     }
@@ -202,8 +217,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         else {
             
-            let ac = UIAlertController(title: title, message: "Incorrect", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            let ac = UIAlertController(title: title, message: "Incorrect. You now have \(++currentErrors) errors", preferredStyle: .Alert)
+            if currentErrors < 4 {
+                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
+            } else {
+                ac.addAction(UIAlertAction(title: "Stats", style: .Default, handler: segueToGoodbye))
+            }
             presentViewController(ac, animated: true, completion: nil)
         }
     }

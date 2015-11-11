@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A26E0AA11BF26B6F002DA0D4 /* GoodbyeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26E0AA01BF26B6F002DA0D4 /* GoodbyeViewController.swift */; };
 		A2E2F4AB1BB0696C008FD148 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2F4AA1BB0696C008FD148 /* AppDelegate.swift */; };
 		A2E2F4AD1BB0696C008FD148 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2E2F4AC1BB0696C008FD148 /* ViewController.swift */; };
 		A2E2F4B01BB0696C008FD148 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2E2F4AE1BB0696C008FD148 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A26E0AA01BF26B6F002DA0D4 /* GoodbyeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodbyeViewController.swift; sourceTree = "<group>"; };
 		A2E2F4A71BB0696B008FD148 /* L6kalonso.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = L6kalonso.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2E2F4AA1BB0696C008FD148 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A2E2F4AC1BB0696C008FD148 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				A2E2F4AA1BB0696C008FD148 /* AppDelegate.swift */,
 				A2E2F4AC1BB0696C008FD148 /* ViewController.swift */,
 				A2E2F4AE1BB0696C008FD148 /* Main.storyboard */,
+				A26E0AA01BF26B6F002DA0D4 /* GoodbyeViewController.swift */,
 				A2E2F4B11BB0696C008FD148 /* Assets.xcassets */,
 				A2E2F4B31BB0696C008FD148 /* LaunchScreen.storyboard */,
 				A2E2F4B61BB0696C008FD148 /* Info.plist */,
@@ -200,6 +203,7 @@
 			files = (
 				A2E2F4AD1BB0696C008FD148 /* ViewController.swift in Sources */,
 				A2E2F4AB1BB0696C008FD148 /* AppDelegate.swift in Sources */,
+				A26E0AA11BF26B6F002DA0D4 /* GoodbyeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +393,7 @@
 				A2E2F4C61BB0696C008FD148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A2E2F4C71BB0696C008FD148 /* Build configuration list for PBXNativeTarget "L6kalonsoTests" */ = {
 			isa = XCConfigurationList;
@@ -397,6 +402,7 @@
 				A2E2F4C91BB0696C008FD148 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

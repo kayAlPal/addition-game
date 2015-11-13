@@ -14,11 +14,19 @@ class GoodbyeViewController: UIViewController {
     
     @IBOutlet var highScoreLabel: UILabel!
     
+    var highScoreFromViewController: Int?
+    var userScoreFromViewController: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        if let highScore = highScoreFromViewController {
+            highScoreLabel.text = "\(highScore)"
+        }
+        if let currentScore = userScoreFromViewController {
+            thisGameScoreLabel.text = "\(currentScore)"
+        }
     }
 
     override func didReceiveMemoryWarning() {

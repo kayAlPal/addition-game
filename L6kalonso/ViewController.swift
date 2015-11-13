@@ -12,6 +12,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
     
+    var highScoreFromUserTableView: Int? {
+        didSet {
+            if let currentHighScore = highScoreFromUserTableView {
+                if currentHighScore < userScore {
+                    highScoreFromUserTableView = userScore
+                }
+            }
+        }
+    }
+    
     @IBOutlet var easyLabel: UILabel!
     @IBOutlet var easyButton: UIButton!
     
@@ -22,9 +32,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var hardButton: UIButton!
     
     @IBOutlet var textField: UITextField!
+    @IBOutlet var textFieldLabel: UILabel!
     
     var theLabels = [UILabel]()
+    var theButtons = [UIButton]()
 
+    @IBOutlet var currentScoreLabel: UILabel!
+    @IBOutlet var errorLabel: UILabel!
     
     
     var easyOne = 0
@@ -36,10 +50,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var hardOne = 0
     var hardTwo = 0
     var hardAnswer = 0
+    var theAnswer = 0
     
-    var possibleAnswer: Int? = 0
+    //var possibleAnswer: Int? = 0
     var currentAnswer = 0
     var currentErrors = 0
+    var newPoints = 0
+    
     
     var userScore = 0
     var currentGoal = 20
@@ -54,9 +71,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        easyButton.layer.cornerRadius = 15
-        easyButton.layer.borderWidth = 1
-        easyButton.layer.borderColor = UIColor.whiteColor().CGColor
+        theButtons.append(easyButton)
+        theButtons.append(mediumButton)
+        theButtons.append(hardButton)
+        
+        for button in theButtons {
+            button.layer.cornerRadius = 15
+            button.layer.borderWidth = 1
+            button.layer.borderColor = UIColor.grayColor().CGColor
+        }
         
         startTheGame()
     }
@@ -112,14 +135,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         //Hide the keyboard
         textField.resignFirstResponder()
+        checkAnswer()
         return true
     }
     
     func textFieldDidEndEditing(textField: UITextField) {
         
         if let possibleAnswer = Int(textField.text!) {
-//            textField.placeholder = "Touch the corresponding square to assign"
-//            textField.text = ""
             currentAnswer = possibleAnswer
         }
         else {
@@ -132,29 +154,42 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
    //MARK: Actions
     
-    @IBAction func easyButton(sender: UIButton) {
-        
+    
+    
+    @IBAction func callTheTextField(sender: UIButton) {
+        if sender.tag == 1{
+            theAnswer = easyAnswer
+            newPoints = 1
+            textFieldLabel.text = easyLabel.text
+        } else if sender.tag == 2{
+            theAnswer = medAnswer
+            newPoints = 2
+            textFieldLabel.text = mediumLabel.text
+        } else {
+            theAnswer = hardAnswer
+            newPoints = 4
+            textFieldLabel.text = hardLabel.text
+        }
         textField.delegate = self
         textField.becomeFirstResponder()
         return
     }
     
-        //easyLabel.text = "\(easyOne) + \(easyTwo) = \(currentAnswer)"
-        //textField.placeholder = "Touch the corresponding square to assign"
-        //textField.text = ""
-    func checkAnswer(String: answer) {
     
-        if currentAnswer == easyAnswer {
+    func checkAnswer() {
+    
+        if currentAnswer == theAnswer {
             
-            let ac = UIAlertController(title: title, message: "Correct! Your score is \(++userScore).", preferredStyle: .Alert)
+            userScore += newPoints
+            let ac = UIAlertController(title: title, message: "Correct! Your score is \(userScore).", preferredStyle: .Alert)
             ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
             presentViewController(ac, animated: true, completion: nil)
 
         }
             
         else {
-            
-            let ac = UIAlertController(title: title, message: "Incorrect. You now have \(++currentErrors) errors", preferredStyle: .Alert)
+            //textFieldLabel.text = "\(theAnswer)"
+            let ac = UIAlertController(title: title, message: "Incorrect. \(textFieldLabel.text!) = \(theAnswer) not \(currentAnswer). \nErrors: \(++currentErrors)", preferredStyle: .Alert)
             if currentErrors < 4 {
                 ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
             } else {
@@ -162,70 +197,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
             presentViewController(ac, animated: true, completion: nil)
         }
+        textField.text = ""
+        textFieldLabel.text = ""
+        currentScoreLabel.text = "\(userScore)"
+        errorLabel.text = "\(currentErrors)"
     }
     
     func segueToGoodbye(alert: UIAlertAction! = nil) {
         
+       // let destVC = UIStoryboardSegue. as! GoodbyeViewController
+        
+        
     }
 
-    
-    @IBAction func mediumButton(sender: UIButton) {
-        
-        textField.placeholder = "Touch the corresponding square to assign"
-        textField.text = ""
 
-        mediumLabel.text = "\(medOne) + \(medTwo) = \(currentAnswer)"
-        
-        if currentAnswer == medAnswer {
-            
-            userScore += 2
-            
-            let ac = UIAlertController(title: title, message: "Correct! Your score is \(userScore).", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
-            presentViewController(ac, animated: true, completion: nil)
-        }
-            
-        else {
-            
-            let ac = UIAlertController(title: title, message: "Incorrect. Current number of errors: \(++currentErrors)", preferredStyle: .Alert)
-            if currentErrors < 4 {
-                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
-            } else {
-                ac.addAction(UIAlertAction(title: "Stats", style: .Default, handler: segueToGoodbye))
-            }
-            presentViewController(ac, animated: true, completion: nil)
-        }
-    }
-    
-    
-    @IBAction func hardButton(sender: UIButton) {
-        
-        textField.placeholder = "Touch the corresponding square to assign"
-        textField.text = ""
-
-        
-        hardLabel.text = "\(hardOne) + \(hardTwo) = \(currentAnswer)"
-        
-        if currentAnswer == hardAnswer {
-            
-            userScore += 4
-            
-            let ac = UIAlertController(title: title, message: "Correct! Your score is \(userScore).", preferredStyle: .Alert)
-            ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
-            presentViewController(ac, animated: true, completion: nil)
-        }
-            
-        else {
-            
-            let ac = UIAlertController(title: title, message: "Incorrect. You now have \(++currentErrors) errors", preferredStyle: .Alert)
-            if currentErrors < 4 {
-                ac.addAction(UIAlertAction(title: "Continue", style: .Default, handler: startTheGame))
-            } else {
-                ac.addAction(UIAlertAction(title: "Stats", style: .Default, handler: segueToGoodbye))
-            }
-            presentViewController(ac, animated: true, completion: nil)
-        }
-    }
     
 }
 

@@ -16,6 +16,7 @@ class UserTableViewController: UITableViewController {
     var theUsers = [User]()
     let practiceUser = User(newPic: nil, newName: "Newbie", girl: true, highScore: "\(6)")
     
+    var currentUser: User?
     var ourDefaults = NSUserDefaults.standardUserDefaults()
     
     
@@ -24,8 +25,7 @@ class UserTableViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
-        // let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
-        //self.navigationItem.rightBarButtonItem = addButton
+
         if let split = self.splitViewController {
             let controllers = split.viewControllers
             self.userViewController = (controllers[controllers.count-1] as! UINavigationController).topViewController as? UserViewController
@@ -43,7 +43,7 @@ class UserTableViewController: UITableViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
-        self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
+        //self.clearsSelectionOnViewWillAppear = self.splitViewController!.collapsed
         super.viewWillAppear(animated)
     }
     
@@ -52,11 +52,7 @@ class UserTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //    func insertNewObject(sender: AnyObject) {
-    //        theUsers.insert(User(), atIndex: 0)
-    //        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-    //        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
-    //    }
+
     
     // MARK: - Segues
     
@@ -68,6 +64,13 @@ class UserTableViewController: UITableViewController {
                 controller.detailItem = object
                 controller.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
                 controller.navigationItem.leftItemsSupplementBackButton = true
+            }
+        }
+        if segue.identifier == "ToTheGame" {
+            if let indexPath = self.tableView.indexPathForSelectedRow {
+                currentUser = theUsers[indexPath.row]
+                let destVC = segue.destinationViewController as? ViewController
+                destVC?.highScoreFromUserTableView = Int(currentUser!.level)
             }
         }
     }
@@ -88,6 +91,19 @@ class UserTableViewController: UITableViewController {
             }
             saveUsers()
             tableView.reloadData()
+        }
+    }
+    
+    @IBAction func unwindToFinish(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? GoodbyeViewController {
+            if let thisUser = currentUser {
+                thisUser.level = sourceViewController.highScore!
+                if let selectedIndexPath = tableView.indexPathForSelectedRow {
+                    // Update an existing user.
+                    theUsers[selectedIndexPath.row] = thisUser
+                    tableView.reloadRowsAtIndexPaths([selectedIndexPath], withRowAnimation: .None)
+                }
+            }
         }
     }
     

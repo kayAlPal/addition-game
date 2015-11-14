@@ -80,7 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             button.layer.borderWidth = 1
             button.layer.borderColor = UIColor.grayColor().CGColor
         }
-        
+
         startTheGame()
     }
     
@@ -99,9 +99,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         generateNewLabels(easyRange, medium: mediumRange, hard: hardRange)
         
-        //textField.delegate = self
-        //textField.placeholder = "Type the answer to any of the three questions"
-        //textField.becomeFirstResponder()
+    
     }
     
     func generateNewLabels(easy: UInt32, medium: UInt32, hard: UInt32) {

@@ -36,9 +36,9 @@ class UserViewController: UIViewController, UITextFieldDelegate, UIImagePickerCo
         // Update the user interface for the detail item.
         if let thisUser = self.detailItem {
             nameTextField?.text = thisUser.name
-            levelLabel.text = thisUser.level
+            levelLabel?.text = thisUser.level
             photoImageView?.image = thisUser.selfie
-            genderSegmentedControl.hidden = true
+            genderSegmentedControl?.hidden = true
         }
     }
     

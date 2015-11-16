@@ -14,14 +14,16 @@ class GoodbyeViewController: UIViewController {
     
     @IBOutlet var highScoreLabel: UILabel!
     
-    var highScoreFromViewController: Int?
-    var userScoreFromViewController: Int?
-    
-    var highScore: String? {
+    var highScoreFromViewController: Int?  {
         didSet {
-            highScore = "\(highScoreFromViewController)"
+            if let theresAHighScore = highScoreFromViewController {
+                highScore = "\(theresAHighScore)"
+            }
         }
     }
+
+    var userScoreFromViewController: Int?
+    var highScore: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +35,9 @@ class GoodbyeViewController: UIViewController {
         if let currentScore = userScoreFromViewController {
             thisGameScoreLabel.text = "\(currentScore)"
         }
+        print(highScoreFromViewController)
+        print(userScoreFromViewController)
+        print(highScore)
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +51,16 @@ class GoodbyeViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if let destVC = segue.destinationViewController as? UserTableViewController {
+//            if let thisScore = highScore {
+//                destVC.currentUser?.level = thisScore
+////                if let thisUser = destVC.currentUser {
+////                    thisUser.level = thisScore
+//                    print(thisScore)
+//               // }
+        
+//            }
+//        }
         
     }
 

@@ -105,6 +105,8 @@ class UserTableViewController: UITableViewController {
                 }
             }
         }
+        tableView.reloadData()
+        saveUsers()
     }
     
     // MARK: - Table View

@@ -12,16 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     //MARK: Properties
     
-    var highScoreFromUserTableView: Int? {
-        didSet {
-            if let currentHighScore = highScoreFromUserTableView {
-                if currentHighScore < userScore {
-                    highScoreFromUserTableView = userScore
-                }
-            }
-        }
-    }
-    
+    var highScoreFromUserTableView: Int?
     @IBOutlet var easyLabel: UILabel!
     @IBOutlet var easyButton: UIButton!
     
@@ -58,7 +49,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var newPoints = 0
     
     
-    var userScore = 0
+    var userScore = 0 {
+        didSet {
+            if let currentHighScore = highScoreFromUserTableView {
+                if currentHighScore < userScore {
+                    highScoreFromUserTableView = userScore
+                }
+            }
+        }
+    }
+
     var currentGoal = 20
     
     var easyRange: UInt32 = 10
@@ -201,10 +201,18 @@ class ViewController: UIViewController, UITextFieldDelegate {
         errorLabel.text = "\(currentErrors)"
     }
     
+    
+    //MARK: Navigation
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destVC = segue.destinationViewController as? GoodbyeViewController
+        destVC?.highScoreFromViewController = highScoreFromUserTableView
+        destVC?.userScoreFromViewController = userScore
+    }
+    
     func segueToGoodbye(alert: UIAlertAction! = nil) {
         
-       // let destVC = UIStoryboardSegue. as! GoodbyeViewController
-        
+        performSegueWithIdentifier("ToGoodbye", sender: self)
         
     }
 

@@ -1,15 +1,15 @@
 //
-//  L6kalonsoTests.swift
-//  L6kalonsoTests
+//  AdditionChallengeTests.swift
+//  AdditionChallengeTests
 //
 //  Created by Kelly Alonso-Palt on 9/21/15.
 //  Copyright © 2015 Kelly Alonso. All rights reserved.
 //
 
 import XCTest
-@testable import L6kalonso
+@testable import AdditionChallenge
 
-class L6kalonsoTests: XCTestCase {
+class AdditionChallengeTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

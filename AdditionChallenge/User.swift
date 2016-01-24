@@ -1,6 +1,6 @@
 //
 //  User.swift
-//  L6kalonso
+//  AdditionChallenge
 //
 //  Created by Kelly Alonso-Palt on 11/11/15.
 //  Copyright © 2015 Kelly Alonso. All rights reserved.

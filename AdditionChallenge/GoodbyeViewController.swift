@@ -1,6 +1,6 @@
 //
 //  GoodbyeViewController.swift
-//  L6kalonso
+//  AdditionChallenge
 //
 //  Created by Kelly Alonso-Palt on 11/10/15.
 //  Copyright © 2015 Kelly Alonso. All rights reserved.

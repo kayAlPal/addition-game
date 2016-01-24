@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2E2F4A61BB0696B008FD148"
-               BuildableName = "L6kalonso.app"
-               BlueprintName = "L6kalonso"
-               ReferencedContainer = "container:L6kalonso.xcodeproj">
+               BuildableName = "AdditionChallenge.app"
+               BlueprintName = "AdditionChallenge"
+               ReferencedContainer = "container:AdditionChallenge.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A2E2F4BA1BB0696C008FD148"
-               BuildableName = "L6kalonsoTests.xctest"
-               BlueprintName = "L6kalonsoTests"
-               ReferencedContainer = "container:L6kalonso.xcodeproj">
+               BuildableName = "AdditionChallenge.xctest"
+               BlueprintName = "AdditionChallengeTests"
+               ReferencedContainer = "container:AdditionChallenge.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2E2F4A61BB0696B008FD148"
-            BuildableName = "L6kalonso.app"
-            BlueprintName = "L6kalonso"
-            ReferencedContainer = "container:L6kalonso.xcodeproj">
+            BuildableName = "AdditionChallenge.app"
+            BlueprintName = "AdditionChallenge"
+            ReferencedContainer = "container:AdditionChallenge.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -66,9 +66,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2E2F4A61BB0696B008FD148"
-            BuildableName = "L6kalonso.app"
-            BlueprintName = "L6kalonso"
-            ReferencedContainer = "container:L6kalonso.xcodeproj">
+            BuildableName = "AdditionChallenge.app"
+            BlueprintName = "AdditionChallenge"
+            ReferencedContainer = "container:AdditionChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -85,9 +85,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A2E2F4A61BB0696B008FD148"
-            BuildableName = "L6kalonso.app"
-            BlueprintName = "L6kalonso"
-            ReferencedContainer = "container:L6kalonso.xcodeproj">
+            BuildableName = "AdditionChallenge.app"
+            BlueprintName = "AdditionChallenge"
+            ReferencedContainer = "container:AdditionChallenge.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
